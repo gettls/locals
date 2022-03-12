@@ -1,0 +1,9 @@
+package community.locals.dto;
+
+import lombok.Data;
+
+@Data
+public class SearchCond {
+	int page;
+	int size;
+}

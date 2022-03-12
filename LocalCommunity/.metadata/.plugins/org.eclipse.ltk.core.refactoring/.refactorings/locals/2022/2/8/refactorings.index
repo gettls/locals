@@ -1,0 +1,23 @@
+1644760090964	Rename resource 'application.properties'
+1644761016285	Rename package 'community.locals.common.member'
+1644761042139	Delete element
+1644761580512	Move 'home.html' to 'static'
+1644761628613	Move file
+1644762756197	Delete element
+1644762788391	Delete element
+1644764310758	Copy package
+1644764313612	Delete element
+1644764326508	Rename package 'community.locals.member.api'
+1644764631371	Rename type 'MemberRegisterDto'
+1644819731919	Rename package 'community.locals.member.controller.api'
+1644819744153	Rename package 'community.locals.member.domain'
+1644819747479	Rename package 'community.locals.member.dto'
+1644819751073	Rename package 'community.locals.member.repository'
+1644819763042	Rename package 'community.locals.common.config'
+1644823077417	Copy compilation unit
+1644824963083	Rename compilation unit 'NotExistMemberException.java'
+1644845031723	Rename package 'community.locals.config.authj'
+1644845096132	Rename type 'principalDetails'
+1644855291712	Delete element
+1645095216672	Copy file
+1645095271911	Delete element
