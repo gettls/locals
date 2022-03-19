@@ -12,10 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 
 import community.locals.config.jwt.JwtUtils;
 import community.locals.domain.Member;
-import community.locals.dto.MemberDelete;
-import community.locals.dto.MemberRegister;
-import community.locals.dto.MemberResponse;
-import community.locals.dto.MemberUpdate;
+import community.locals.dto.member.MemberDelete;
+import community.locals.dto.member.MemberRegister;
+import community.locals.dto.member.MemberResponse;
+import community.locals.dto.member.MemberUpdate;
 import community.locals.exception.MemberMismatchMatchException;
 import community.locals.exception.MemberNotExistException;
 import community.locals.repository.MemberRepository;
@@ -27,6 +27,7 @@ import lombok.extern.slf4j.Slf4j;
 @Transactional(readOnly = true)
 @Slf4j
 public class MemberService {
+	
 	private final MemberRepository memberRepository;
 	private final BCryptPasswordEncoder passwordEncoder;
 	private final JwtUtils jwtUtils;
@@ -54,10 +55,10 @@ public class MemberService {
 	@Transactional
 	public void delete(MemberDelete memberDelete) {
 		Member member = memberRepository.findByUsername(memberDelete.getUsername())
-				.orElseThrow(() -> new MemberNotExistException(NOT_EXIST_MESSAGE));
+				.orElseThrow(() -> new MemberNotExistException(MEMBER_NOT_EXISTS));
 		
 		if(!passwordEncoder.matches(memberDelete.getPassword(), member.getPassword())) {
-			throw new MemberMismatchMatchException(MISMATCH_MESSAGE);
+			throw new MemberMismatchMatchException(MEMBER_MISMATCH);
 		}
 		
 		memberRepository.delete(member);
@@ -65,5 +66,11 @@ public class MemberService {
 	
 	public Page<Member> findAll(Pageable pageable) {
 		return memberRepository.findAll(pageable);
+	}
+	
+	// Dynamic Query
+	
+	public Page<MemberResponse> findAllSortedByCreateDate(Pageable pageable){
+		return memberRepository.findAllSortedByCreateDate(pageable);
 	}
 }

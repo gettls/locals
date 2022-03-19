@@ -1,0 +1,28 @@
+package community.locals.controller;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import community.locals.config.jwt.JwtUtils;
+import community.locals.dto.PostRegister;
+import community.locals.repository.PostRepository;
+import community.locals.service.PostService;
+import lombok.AllArgsConstructor;
+
+@RestController
+@RequestMapping("/api/location")
+@AllArgsConstructor
+public class PostApiController {
+	
+	private final PostService postService;
+	
+	@PostMapping("/register")
+	public void register(@Validated PostRegister postRegister, HttpServletRequest request) {
+		postService.register(postRegister, request);
+	}
+}

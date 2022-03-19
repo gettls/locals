@@ -23,15 +23,16 @@ public class ApiExceptionController {
 	}
 
 	@ExceptionHandler
-	public ResponseEntity<ErrorResult> mismatchExHandler(MemberMismatchMatchException e){
+	public ResponseEntity<ErrorResult> memberMismatchExHandler(MemberMismatchMatchException e){
 		ErrorResult errorResult = new ErrorResult("MEMBER-MISMATCH-EXCEPTION", e.getMessage());
 		return new ResponseEntity<>(errorResult, HttpStatus.BAD_REQUEST);
 	}
 
 	
 	@ExceptionHandler
-	public ResponseEntity<ErrorResult> notExistExHandler(MemberNotExistException e){
+	public ResponseEntity<ErrorResult> memberNotExistExHandler(MemberNotExistException e){
 		ErrorResult errorResult = new ErrorResult("NOT-EXISTS-EXCEPTION", e.getMessage());
 		return new ResponseEntity<>(errorResult, HttpStatus.BAD_REQUEST);
 	}
+	
 }

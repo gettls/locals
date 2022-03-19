@@ -1,0 +1,30 @@
+package community.locals.repository;
+
+import static community.locals.domain.QMember.member;
+
+import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import com.querydsl.jpa.impl.JPAQueryFactory;
+
+import community.locals.dto.member.MemberResponse;
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+public class CustomMemberRepositoryImpl implements CustomMemberRepository{
+
+	private final JPAQueryFactory jpaQueryFactory;
+	
+	@Override
+	public Page<MemberResponse> searchSortedByCreatedDate(Pageable pageable) {
+		List<MemberResponse> contents = jpaQueryFactory
+							.selectFrom(member)
+							.orderBy(member.createdDate.desc())
+							.offset(pageable.getOffset())
+							.limit(pageable.getPageSize())
+							.fetch();
+	}
+
+}

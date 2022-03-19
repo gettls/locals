@@ -1,0 +1,5 @@
+package community.locals.repository;
+
+public interface CustomMemberRepository {
+
+}

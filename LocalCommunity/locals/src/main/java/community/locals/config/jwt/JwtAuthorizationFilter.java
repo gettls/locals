@@ -16,7 +16,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import community.locals.config.auth.PrincipalDetails;
-import community.locals.dto.MemberLogin;
+import community.locals.dto.member.MemberLogin;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 

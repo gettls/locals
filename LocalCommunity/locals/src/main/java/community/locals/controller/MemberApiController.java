@@ -28,12 +28,12 @@ import org.springframework.web.bind.annotation.RestController;
 import community.locals.config.auth.PrincipalDetails;
 import community.locals.config.jwt.JwtUtils;
 import community.locals.domain.Member;
-import community.locals.dto.MemberDelete;
-import community.locals.dto.MemberLogin;
-import community.locals.dto.MemberRegister;
-import community.locals.dto.MemberResponse;
-import community.locals.dto.MemberUpdate;
 import community.locals.dto.jwt.JwtResponse;
+import community.locals.dto.member.MemberDelete;
+import community.locals.dto.member.MemberLogin;
+import community.locals.dto.member.MemberRegister;
+import community.locals.dto.member.MemberResponse;
+import community.locals.dto.member.MemberUpdate;
 import community.locals.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -79,8 +79,13 @@ public class MemberApiController {
 	
 	@GetMapping("/search")
 	public Page<Member> search(Pageable pageable){
-		log.info("searching...");
 		PageRequest pageRequest = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize());
 		return memberService.findAll(pageRequest);
+	}
+	
+	
+	@GetMapping("/search/createdDate")
+	public Page<MemberResponse> findAllSortedByCreatedDate(Pageable pageable){
+		return memberService.findAllSortedByCreateDate(pageable);
 	}
 }

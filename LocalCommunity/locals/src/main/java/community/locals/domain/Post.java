@@ -16,7 +16,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import community.locals.dto.PostRegister;
+import community.locals.dto.post.PostRegister;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -30,8 +30,6 @@ public class Post {
 	private Long id;
 	private String contents;
 	private String title;
-	@Embedded
-	private Location location;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "MEMBER_ID")
@@ -44,9 +42,9 @@ public class Post {
 	
 	protected Post() {}
 	
-	public Post(PostRegister postRegister) {
+	public Post(PostRegister postRegister, Member member) {
 		contents = postRegister.getContents();
 		title = postRegister.getTitle();
-		member = postRegister.getMember();
+		this.member = member; 
 	}
 }

@@ -1,0 +1,13 @@
+package community.locals.dto.member;
+
+import javax.validation.constraints.NotBlank;
+
+import lombok.Data;
+
+@Data
+public class MemberLogin {
+	@NotBlank
+	private String username;
+	@NotBlank
+	private String password;
+}

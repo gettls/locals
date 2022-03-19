@@ -1,6 +1,0 @@
-package community.locals.dto;
-
-public class SearchCond {
-	int page;
-	int size;
-}
