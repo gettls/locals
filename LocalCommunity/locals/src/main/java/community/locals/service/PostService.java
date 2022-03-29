@@ -31,7 +31,8 @@ public class PostService {
 	public void register(PostRegister postRegister,HttpServletRequest request) {
 		String username = jwtUtils.getUsername(jwtUtils.parseJwt(request));
 		Member findMember = memberRepository.findByUsername(username).get();
-		postRepository.save(new Post(postRegister, findMember));
+		postRegister.setMember(findMember);
+		postRepository.save(postRegister.toEntity());
 	}
 	
 	public void delete(PostDelete postDelete) {

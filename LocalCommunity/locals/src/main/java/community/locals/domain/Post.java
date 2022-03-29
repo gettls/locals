@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import community.locals.dto.post.PostRegister;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 
 @Entity
@@ -46,12 +47,7 @@ public class Post {
 	
 	protected Post() {}
 	
-	public Post(PostRegister postRegister, Member member) {
-		contents = postRegister.getContents();
-		title = postRegister.getTitle();
-		this.member = member; 
-	}
-
+	@Builder
 	public Post(String contents, String title, Member member) {
 		this.contents = contents;
 		this.title = title;
