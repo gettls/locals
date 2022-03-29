@@ -16,7 +16,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import community.locals.config.auth.PrincipalDetails;
-import community.locals.dto.member.MemberLogin;
+import community.locals.dto.member.MemberCrud;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -38,16 +38,16 @@ public class JwtAuthorizationFilter extends UsernamePasswordAuthenticationFilter
 			throws AuthenticationException {
 		log.info("USERNAMEPASSWORD_FILTER");
 		ObjectMapper om = new ObjectMapper();
-		MemberLogin memberLogin = null;
+		MemberCrud memberCrud = null;
 		
 		try {
-			memberLogin = om.readValue(request.getInputStream(), MemberLogin.class);
+			memberCrud = om.readValue(request.getInputStream(), MemberCrud.class);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		log.info("member : {}", memberLogin);
+		log.info("member : {}", memberCrud);
 		UsernamePasswordAuthenticationToken authenticationToken = 
-				new UsernamePasswordAuthenticationToken(memberLogin.getUsername(), memberLogin.getPassword());
+				new UsernamePasswordAuthenticationToken(memberCrud.getUsername(), memberCrud.getPassword());
 		
 		Authentication authentication = authenticationManager.authenticate(authenticationToken);
 		

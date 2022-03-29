@@ -29,11 +29,8 @@ import community.locals.config.auth.PrincipalDetails;
 import community.locals.config.jwt.JwtUtils;
 import community.locals.domain.Member;
 import community.locals.dto.jwt.JwtResponse;
-import community.locals.dto.member.MemberDelete;
-import community.locals.dto.member.MemberLogin;
-import community.locals.dto.member.MemberRegister;
+import community.locals.dto.member.MemberCrud;
 import community.locals.dto.member.MemberResponse;
-import community.locals.dto.member.MemberUpdate;
 import community.locals.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -48,32 +45,32 @@ public class MemberApiController {
 	private final JwtUtils jwtUtils;
 	
 	@GetMapping("/register")
-	public ResponseEntity<?> register(@Validated @ModelAttribute MemberRegister memberRegister) {
+	public ResponseEntity<?> register(@Validated @ModelAttribute MemberCrud memberCrud) {
 		log.info("register...");
-		memberService.register(memberRegister);
+		memberService.register(memberCrud);
 		return ResponseEntity.ok("register success");
 	}
 	
 	@PostMapping("/login")
-	public ResponseEntity<?> login(@Validated @ModelAttribute MemberLogin memberLogin){
-		String jwtToken = jwtUtils.generateToken(memberLogin.getUsername());
+	public ResponseEntity<?> login(@Validated @ModelAttribute MemberCrud memberCrud){
+		String jwtToken = jwtUtils.generateToken(memberCrud.getUsername());
 		log.info("Token = {}", jwtToken);
 		return ResponseEntity.ok(new JwtResponse(
 												jwtToken,
 												"Bearer",
-												memberLogin.getUsername()
+												memberCrud.getUsername()
 												));
 	}
 	
 	@DeleteMapping("/delete")
-	public ResponseEntity<?> delete(@Validated @ModelAttribute MemberDelete memberDelete){
-		memberService.delete(memberDelete);
+	public ResponseEntity<?> delete(@Validated @ModelAttribute MemberCrud memberCrud){
+		memberService.delete(memberCrud);
 		return ResponseEntity.ok("delete");
 	}
 	
 	@PutMapping("/update")
-	public ResponseEntity<?> update(@Validated @ModelAttribute MemberUpdate memberUpdate, HttpServletRequest request){
-		memberService.update(memberUpdate, request);
+	public ResponseEntity<?> update(@Validated @ModelAttribute MemberCrud memberCrud, HttpServletRequest request){
+		memberService.update(memberCrud, request);
 		return ResponseEntity.ok("update");
 	}
 	

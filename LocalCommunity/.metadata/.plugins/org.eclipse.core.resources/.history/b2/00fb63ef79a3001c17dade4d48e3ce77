@@ -1,8 +1,0 @@
-package community.locals.exception;
-
-public class PostNotExistException extends CustomException{
-
-	public PostNotExistException(String message) {
-		super(message);
-	}
-}

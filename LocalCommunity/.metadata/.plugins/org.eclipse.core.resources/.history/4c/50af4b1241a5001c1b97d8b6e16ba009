@@ -1,5 +1,0 @@
-package community.locals.repository;
-
-public class CustomMemberRepositoryImpl {
-
-}

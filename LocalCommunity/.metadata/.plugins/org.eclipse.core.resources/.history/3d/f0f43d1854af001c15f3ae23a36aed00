@@ -1,0 +1,5 @@
+package community.locals.dto.member;
+
+public class MemberCrud {
+
+}

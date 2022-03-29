@@ -18,8 +18,6 @@ import javax.validation.constraints.NotNull;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import community.locals.dto.member.MemberRegister;
-import community.locals.dto.member.MemberUpdate;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -43,18 +41,18 @@ public class Member {
 	
 	protected Member() {}
 	
-	@Builder
-	public Member(MemberRegister memberRegister) {
-		username = memberRegister.getUsername();
-		password = memberRegister.getPassword();
-	}
-	
-	public void update(MemberUpdate memberUpdate) {
-		username = memberUpdate.getUsername();
-		password = memberUpdate.getPassword();
+	public void update(Member member) {
+		username = member.getUsername();
+		password = member.getPassword();
 	}
 	
 	public void addPost(Post post) {
 		posts.add(post);
+	}
+
+	@Builder
+	public Member(String username, String password) {
+		this.username = username;
+		this.password = password;
 	}
 }
