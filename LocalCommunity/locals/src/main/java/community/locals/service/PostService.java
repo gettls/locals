@@ -11,11 +11,13 @@ import static community.locals.exception.PostNotExistException.*;
 import community.locals.config.jwt.JwtUtils;
 import community.locals.domain.Member;
 import community.locals.domain.Post;
+import community.locals.dto.member.MemberResponse;
 import community.locals.dto.post.PostDelete;
 import community.locals.dto.post.PostRegister;
+import community.locals.dto.post.PostResponse;
 import community.locals.exception.PostNotExistException;
-import community.locals.repository.MemberRepository;
-import community.locals.repository.PostRepository;
+import community.locals.repository.member.MemberRepository;
+import community.locals.repository.post.PostRepository;
 import lombok.AllArgsConstructor;
 
 @Service
@@ -40,6 +42,11 @@ public class PostService {
 	
 	public Page<Post> findAll(Pageable pageable) {
 		return postRepository.findAll(pageable);
+	}
+	
+	// Dynamic Query
+	public Page<PostResponse> findAllBy(Pageable pageable){
+		return postRepository.findAllBy(pageable);
 	}
 	
 }

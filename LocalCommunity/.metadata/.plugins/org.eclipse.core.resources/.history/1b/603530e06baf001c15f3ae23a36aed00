@@ -1,0 +1,13 @@
+package community.locals.repository.post;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import community.locals.domain.Post;
+import community.locals.dto.post.PostResponse;
+
+public interface CusotmPostRepository {
+
+//	Page<PostResponse> findAllSortedByCreateDate(Pageable pageable);
+	
+}

@@ -1,0 +1,45 @@
+package community.locals.repository;
+
+import static community.locals.domain.QMember.member;
+import static community.locals.domain.QPost.post;
+import community.locals.dto.member.QMemberResponse.*;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
+
+import com.querydsl.jpa.impl.JPAQueryFactory;
+
+import community.locals.domain.Post;
+import community.locals.dto.member.MemberResponse;
+import community.locals.dto.member.QMemberResponse;
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+public class CustomMemberRepositoryImpl implements CustomMemberRepository{
+
+	private final JPAQueryFactory jpaQueryFactory;
+	
+	@Override
+	public Page<MemberResponse> findAllSortedByCreateDate(Pageable pageable) {
+		
+//		List<Post> posts = jpaQueryFactory
+//							.selectFrom(post)
+//							.leftJoin(post.member, member).fetchJoin()
+//							.orderBy(member.createdDate.desc())
+//							.offset(pageable.getOffset())
+//							.limit(pageable.getPageSize())
+//							.fetch();
+		
+		List<MemberResponse> contents = jpaQueryFactory
+										.select(new QMemberResponse
+												(member.username, posts))
+		
+		long total = contents.size();
+		return new PageImpl<>(contents, pageable, total);
+	}
+
+}

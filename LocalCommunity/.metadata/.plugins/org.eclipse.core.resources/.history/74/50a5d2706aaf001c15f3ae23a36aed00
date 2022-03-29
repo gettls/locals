@@ -1,0 +1,29 @@
+package community.locals.dto.post;
+
+import com.querydsl.core.annotations.QueryProjection;
+
+import community.locals.domain.Member;
+import lombok.Data;
+
+@Data
+public class PostResponse {
+	
+	String contents;
+	String title;
+	Member member;
+	
+	@QueryProjection
+	public PostResponse(String contents, String title, Member member) {
+		this.contents = contents;
+		this.title = title;
+		this.member = member;
+	}
+	
+	@QueryProjection
+	public PostResponse(String contents, String title) {
+		this.contents = contents;
+		this.title = title;
+		this.member = member;
+	}
+	
+}

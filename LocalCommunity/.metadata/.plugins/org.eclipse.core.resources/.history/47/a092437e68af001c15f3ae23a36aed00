@@ -1,0 +1,5 @@
+package community.locals.repository.post;
+
+public class CustomPostRepositoryImpl implements CusotmPostRepository{
+
+}

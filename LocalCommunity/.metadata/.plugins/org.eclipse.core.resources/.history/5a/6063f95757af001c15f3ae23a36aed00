@@ -1,0 +1,5 @@
+package community.locals.config;
+
+public class InitPost {
+
+}

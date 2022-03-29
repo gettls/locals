@@ -13,6 +13,10 @@ public class QMemberResponse extends ConstructorExpression<MemberResponse> {
 
     private static final long serialVersionUID = 587361663L;
 
+    public QMemberResponse(com.querydsl.core.types.Expression<String> username, com.querydsl.core.types.Expression<? extends java.util.List<community.locals.domain.Post>> posts) {
+        super(MemberResponse.class, new Class<?>[]{String.class, java.util.List.class}, username, posts);
+    }
+
     public QMemberResponse(com.querydsl.core.types.Expression<String> username) {
         super(MemberResponse.class, new Class<?>[]{String.class}, username);
     }

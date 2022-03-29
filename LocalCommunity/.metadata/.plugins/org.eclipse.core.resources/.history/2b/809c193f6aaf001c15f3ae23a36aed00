@@ -1,0 +1,33 @@
+package community.locals.repository.post;
+
+import static community.locals.domain.QPost.post;
+import static community.locals.domain.QMember.member;
+
+import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
+
+import com.querydsl.jpa.impl.JPAQueryFactory;
+
+import community.locals.domain.Post;
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+public class CustomPostRepositoryImpl implements CusotmPostRepository{
+
+	private final JPAQueryFactory jpaQueryFactory;
+	
+	@Override
+	public Page<Post> findAllSortedByCreateDate(Pageable pageable) {
+		
+		List<Post> result = jpaQueryFactory
+								.selectFrom(post)
+								.offset(pageable.getOffset())
+								.limit(pageable.getPageSize())
+								.fetch();
+		
+		return new PageImpl<Post>(result, pageable, result.size());
+	}
+}

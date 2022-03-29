@@ -2,6 +2,7 @@ package community.locals.controller;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.data.domain.Page;
@@ -17,10 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import community.locals.config.jwt.JwtUtils;
 import community.locals.domain.Post;
+import community.locals.dto.member.MemberResponse;
 import community.locals.dto.post.PostDelete;
 import community.locals.dto.post.PostRegister;
+import community.locals.dto.post.PostResponse;
 import community.locals.service.PostService;
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
 
 @RestController
 @RequestMapping("/api/post")
@@ -36,7 +40,7 @@ public class PostApiController {
 		return ResponseEntity.ok("post register success");
 	}
 	
-	@GetMapping("/list")
+	@GetMapping("/search")
 	public Page<Post> findAll(Pageable pageable){
 		return postService.findAll(pageable);
 	}
@@ -46,5 +50,10 @@ public class PostApiController {
 	public ResponseEntity<?> delete(@Validated @ModelAttribute PostDelete postDelete, HttpServletRequest request) {
 		postService.delete(postDelete);
 		return ResponseEntity.ok("post delete success");
+	}
+	
+	@GetMapping("/search/createdDate")
+	public Page<PostResponse> findAllBy(Pageable pageable){
+		return postService.findAllBy(pageable);
 	}
 }
