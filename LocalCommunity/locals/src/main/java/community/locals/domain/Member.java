@@ -34,10 +34,11 @@ public class Member {
 	private Long id;
 	private String username;
 	private String password;
+	
 	@CreatedDate
 	private LocalDateTime createdDate;
 	
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Post> posts = new ArrayList<>();
 	
 	protected Member() {}

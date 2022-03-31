@@ -21,10 +21,18 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+/*
+ * Header의 Authorization에 JWT가 있으면,
+ * 해당 JWT를 파싱해서 검증을 하는 절차를 거친다.
+ * 
+ * SecurityContextHolder에 Authentication 객체(UsernamePasswordToken)를
+ * 집어 넣음으로써 인증이 완료된다. 
+ */
+
 @Slf4j
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
-
+	
 	private final JwtUtils jwtUtils;
 	
 

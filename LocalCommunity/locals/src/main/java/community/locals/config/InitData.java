@@ -36,14 +36,14 @@ public class InitData {
 		
 		@Transactional
 		public void init() {
-			for (int i=0; i<10; i++) {
+			for (int i=0; i<3; i++) {
 				String username = "test" + Integer.toString(i + 1);
 				String password = passwordEncoder.encode("1234");
 				
 				Member member = new Member(username, password);
 				em.persist(member);
 				
-				for (int j=0; j<10; j++) {
+				for (int j=0; j<3; j++) {
 					String contents = "contents" + Integer.toString(10*i + j + 1);
 					String title = "title" + Integer.toString(10*i + j + 1);
 				

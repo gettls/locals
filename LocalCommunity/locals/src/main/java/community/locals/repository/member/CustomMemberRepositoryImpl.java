@@ -29,8 +29,6 @@ public class CustomMemberRepositoryImpl implements CustomMemberRepository{
 	
 	@Override
 	public Page<MemberResponse> findAllSortedByCreateDate(Pageable pageable) {
-		
-		
 		// member : posts 제외한 부분 조회
 		List<MemberResponse> contents = jpaQueryFactory
 							.select(new QMemberResponse(
@@ -60,5 +58,4 @@ public class CustomMemberRepositoryImpl implements CustomMemberRepository{
 							.where(post.member.username.eq(username))
 							.fetch();
 	}
-	
 }

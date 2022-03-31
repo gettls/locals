@@ -53,7 +53,9 @@ public class JwtUtils {
 			.getBody()
 			.getSubject();
 	}
-	
+	/*
+	 * 유효기간을 확인한다.
+	 */
 	public boolean validateToken(String jwtToken) {
 		try {
 			log.info("validate..");
@@ -68,6 +70,11 @@ public class JwtUtils {
 		}
 	}
 	
+	/*
+	 * UserDetailsService.loadByUsername() 을 통해 JWT의 토큰에 있는
+	 * sub claim(username)의 유저가 DB에 있는지 확인한다. 
+	 * 이 때, DB의 username은 죽보
+	 */
 	public Authentication getAuthentication(String jwtToken) {
 		UserDetails userDetails = principalDetailsService.loadUserByUsername(getUsername(jwtToken));
 		log.info("PASSWORD : {}",userDetails.getPassword());

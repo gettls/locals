@@ -3,13 +3,13 @@ package community.locals.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import community.locals.dto.exception.ErrorResult;
 import community.locals.exception.MemberMismatchMatchException;
 import community.locals.exception.MemberNotExistException;
+import community.locals.exception.PostNotExistException;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -31,6 +31,12 @@ public class ApiExceptionController {
 	
 	@ExceptionHandler
 	public ResponseEntity<ErrorResult> memberNotExistExHandler(MemberNotExistException e){
+		ErrorResult errorResult = new ErrorResult("NOT-EXISTS-EXCEPTION", e.getMessage());
+		return new ResponseEntity<>(errorResult, HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler
+	public ResponseEntity<ErrorResult> postNotExistException(PostNotExistException e){
 		ErrorResult errorResult = new ErrorResult("NOT-EXISTS-EXCEPTION", e.getMessage());
 		return new ResponseEntity<>(errorResult, HttpStatus.BAD_REQUEST);
 	}

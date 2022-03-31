@@ -45,7 +45,9 @@ public class JwtAuthorizationFilter extends UsernamePasswordAuthenticationFilter
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		log.info("member : {}", memberCrud);
+		
 		UsernamePasswordAuthenticationToken authenticationToken = 
 				new UsernamePasswordAuthenticationToken(memberCrud.getUsername(), memberCrud.getPassword());
 		
