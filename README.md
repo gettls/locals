@@ -2,7 +2,7 @@
 
 
 
-# 🛠기술스택
+# 🛠 사용된 기술스택
 
 #### `Spring Boot` `JAVA11` `Spring Security`
 #### `JPA` `Spring Data JPA` `QueryDsl`
