@@ -83,3 +83,16 @@ public Page<Member> findAllSortedByCreatedDate(Pageable pageable) {
  - 필요하지 않은 데이터를 DTO 를 통해서 받아오지 않고 쿼리문을 최적화 시켜서 필요한 데이터만 받아오게 됨
  - member 조회 따로 post 조회 따로 수행한 결과가 오히려 더 나은 결과를 만듦
 
+## 4. 페치조인과 BatchSize
+
+![image](https://user-images.githubusercontent.com/80764368/161077077-0ffb08c8-f422-4953-843c-cd05a8b0f47b.png)
+
+- 일대다의 연관관계에서 일(1)쪽을 기준으로 조회 시 페치조인을 사용하면 중복된 데이터가 DB에 올라오는 것을 확인
+
+### 해결방법
+
+![image](https://user-images.githubusercontent.com/80764368/161076804-39b9d4f4-57cc-4ce7-8941-0a24c4b007c8.png)
+![image](https://user-images.githubusercontent.com/80764368/161076893-587824e8-3f95-4199-9a0a-6ce93c69dc8b.png)
+
+- BatchSize를 설정하면 다(N)쪽에서 IN 쿼리문을 통해 일(1)쪽에 해당하는 id 에 대해서만 데이터를 가져온다.
+- 다만, 페치조인은 쿼리문이 1번, BatchSize 는 쿼리문이 2번 발생했다. 상황에 따라서 잘 사용하는 것이 필요할듯.
