@@ -7,4 +7,6 @@ import community.locals.dto.comment.CommentResponse;
 public interface CustomCommentRepository {
 	
 	List<CommentResponse> findCommentsByTitle (String postTitle);
+	List<CommentResponse> findByUsername (String username);
+	
 }

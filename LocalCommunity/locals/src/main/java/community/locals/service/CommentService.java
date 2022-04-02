@@ -49,4 +49,7 @@ public class CommentService {
 		return commentRepository.findCommentsByTitle(postTitle);
 	}
 	
+	public List<CommentResponse> searchByUsername(String username){
+		return commentRepository.findByUsername(username);
+	}
 }
