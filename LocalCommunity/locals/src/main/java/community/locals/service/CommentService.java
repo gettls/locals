@@ -15,6 +15,7 @@ import community.locals.domain.Comment;
 import community.locals.domain.Member;
 import community.locals.domain.Post;
 import community.locals.dto.comment.CommentCrud;
+import community.locals.dto.comment.CommentResponse;
 import community.locals.exception.PostNotExistException;
 import community.locals.repository.comment.CommentRepository;
 import community.locals.repository.member.MemberRepository;
@@ -44,8 +45,8 @@ public class CommentService {
 	}
 	
 	
-	public Page<Comment> search(Pageable pageable) {
-		return commentRepository.findAll(pageable);
+	public List<CommentResponse> search(String postTitle) {
+		return commentRepository.findCommentsByTitle(postTitle);
 	}
 	
 }

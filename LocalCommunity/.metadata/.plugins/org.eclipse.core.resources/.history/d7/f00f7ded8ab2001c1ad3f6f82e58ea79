@@ -1,0 +1,14 @@
+package community.locals.repository.comment;
+
+import java.util.List;
+
+import community.locals.dto.comment.CommentResponse;
+
+public class CustomCommentRepositoryImpl implements CustomCommentRepository{
+
+	@Override
+	public List<CommentResponse> findCommentsByTitle(String postTitle) {
+		return null;
+	}
+
+}
