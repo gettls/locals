@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;community.locals.dto.comment.CommentRegister&apos; to &apos;CommentCrud&apos;&#x0D;&#x0A;- Original project: &apos;locals&apos;&#x0D;&#x0A;- Original element: &apos;community.locals.dto.comment.CommentRegister&apos;&#x0D;&#x0A;- Renamed element: &apos;community.locals.dto.comment.CommentCrud&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;CommentRegister&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java=/gradle_scope=/main=/=/gradle_used_by_scope=/main,test=/&lt;community.locals.dto.comment{CommentRegister.java[CommentRegister" matchStrategy="1" name="CommentCrud" qualified="false" references="true" similarDeclarations="false" stamp="1648879506171" textual="false" version="1.0"/>
+</session>

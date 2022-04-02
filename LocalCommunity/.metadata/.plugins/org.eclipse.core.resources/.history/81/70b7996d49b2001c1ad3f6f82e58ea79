@@ -1,0 +1,20 @@
+package community.locals.domain;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class Comment {
+	
+	@Id @GeneratedValue
+	@Column(name = "COMMENT_ID")
+	
+}

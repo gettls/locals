@@ -1,0 +1,27 @@
+package community.locals.dto.post;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import community.locals.domain.Member;
+import community.locals.domain.Post;
+import lombok.Data;
+
+@Data
+public class PostRegister {
+	
+	@NotNull(message = "contents는 널이어서는 안됩니다.")
+	private String contents;
+	@NotNull(message = "title는 널이어서는 안됩니다.")
+	private String title;
+	
+	private Member member;
+	
+	public Post toEntity() {
+		return Post.builder()
+					.contents(contents)
+					.title(title)
+					.member(member)
+					.build();
+	}
+}

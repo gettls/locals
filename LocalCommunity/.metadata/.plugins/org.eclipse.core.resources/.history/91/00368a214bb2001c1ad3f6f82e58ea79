@@ -1,0 +1,18 @@
+package community.locals.service;
+
+import org.springframework.stereotype.Service;
+
+import community.locals.dto.comment.CommentCrud;
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class CommentService {
+
+	public void register(CommentCrud commentCrud) {
+		
+		
+		
+	}
+	
+}

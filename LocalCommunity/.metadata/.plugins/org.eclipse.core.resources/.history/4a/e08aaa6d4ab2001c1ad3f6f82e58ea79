@@ -1,0 +1,17 @@
+package community.locals.dto.comment;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import lombok.Data;
+
+@Data
+public class CommentRegister {
+	
+	@NotNull(message =  "내용을 입력하세요.")
+	@Size(max = 100)
+	private String contents;
+	
+	
+	
+}

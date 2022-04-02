@@ -1,0 +1,23 @@
+package community.locals.service;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Service;
+
+import community.locals.config.jwt.JwtUtils;
+import community.locals.dto.comment.CommentCrud;
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class CommentService {
+
+	private final JwtUtils jwtUtils;
+	
+	public void register(CommentCrud commentCrud, HttpServletRequest request) {
+		
+		String username = jwtUtils.getUsername(jwtUtils.parseJwt(request));
+		
+	}
+	
+}

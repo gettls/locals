@@ -1,0 +1,5 @@
+package community.locals.domain;
+
+public class Comments {
+
+}
