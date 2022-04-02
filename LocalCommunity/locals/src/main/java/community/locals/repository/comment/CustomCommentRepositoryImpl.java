@@ -1,3 +1,4 @@
+
 package community.locals.repository.comment;
 
 import static community.locals.domain.QPost.post;
