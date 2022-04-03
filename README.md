@@ -4,7 +4,7 @@
 
 # 🛠 사용된 기술스택
 
-#### `Spring Boot` `JAVA11` `Spring Security`
+#### `Spring Boot 2.6.6` `JAVA 11` `Spring Security`
 #### `JPA` `Spring Data JPA` `QueryDsl`
 #### `H2 Database` 
 
