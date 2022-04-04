@@ -34,7 +34,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class JwtUtils {
 	
-	private final long VALID_MILISECOND = 1000L * 60 * 60; // 1 ½Ã°£
+	private final long VALID_MILISECOND = 1000L * 60 * 60; // 1 ì‹œê°„
 	private final PrincipalDetailsService principalDetailsService;
 	
 	@Value("${jwt.secret}")
@@ -54,7 +54,7 @@ public class JwtUtils {
 			.getSubject();
 	}
 	/*
-	 * À¯È¿±â°£À» È®ÀÎÇÑ´Ù.
+	 * ìœ íš¨ê¸°ê°„ì„ í™•ì¸í•œë‹¤.
 	 */
 	public boolean validateToken(String jwtToken) {
 		try {
@@ -71,9 +71,8 @@ public class JwtUtils {
 	}
 	
 	/*
-	 * UserDetailsService.loadByUsername() À» ÅëÇØ JWTÀÇ ÅäÅ«¿¡ ÀÖ´Â
-	 * sub claim(username)ÀÇ À¯Àú°¡ DB¿¡ ÀÖ´ÂÁö È®ÀÎÇÑ´Ù. 
-	 * ÀÌ ¶§, DBÀÇ usernameÀº Á×º¸
+	 * UserDetailsService.loadByUsername() ì„ í†µí•´ JWTì˜ í† í°ì— ìˆëŠ”
+	 * sub claim(username)ì˜ ìœ ì €ê°€ DBì— ìˆëŠ”ì§€ í™•ì¸í•œë‹¤. 
 	 */
 	public Authentication getAuthentication(String jwtToken) {
 		UserDetails userDetails = principalDetailsService.loadUserByUsername(getUsername(jwtToken));
