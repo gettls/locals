@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import community.locals.dto.exception.ErrorResult;
+import community.locals.exception.InputNotFoundException;
 import community.locals.exception.MemberMismatchMatchException;
 import community.locals.exception.MemberNotExistException;
 import community.locals.exception.PostMismatchUsernameException;

@@ -16,6 +16,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.firewall.DefaultHttpFirewall;
 import org.springframework.security.web.firewall.HttpFirewall;
 
+import community.locals.config.auth.AuthFailureHandler;
 import community.locals.config.auth.PrincipalDetailsService;
 import community.locals.config.jwt.JwtAuthenticationFilter;
 import community.locals.config.jwt.JwtAuthorizationFilter;
@@ -23,7 +24,7 @@ import community.locals.config.jwt.JwtUtils;
 import lombok.RequiredArgsConstructor;
 
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity(debug = true)
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
@@ -73,8 +74,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.antMatchers("/api/member/register").permitAll()
 			.antMatchers("/api/member/search/**").permitAll()
 			.antMatchers("/api/post/search/**").permitAll()
-			.anyRequest().authenticated();
-			
+			.anyRequest().authenticated()
+			.and()
+			.exceptionHandling()
+			.authenticationEntryPoint(new AuthFailureHandler());
 	}
 	
 }

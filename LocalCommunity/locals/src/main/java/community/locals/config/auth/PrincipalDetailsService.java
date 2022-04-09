@@ -6,6 +6,7 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import community.locals.domain.Member;
@@ -22,11 +23,14 @@ public class PrincipalDetailsService implements UserDetailsService{
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		log.info("loadUserByUsername(), {}",username);
 		Member member = memberRepository.findByUsername(username)
-		.orElseThrow(() -> new UsernameNotFoundException("해당 유저를 찾을 수 없습니다"));
-		log.info("find Member!!");
+					.orElseThrow(() -> new UsernameNotFoundException("해당 사용자를 찾을 수 없습니다."));
+		
+		log.info("{}", member);
+		
 		return new PrincipalDetails(member);
 	}
-
+	
+	
+	
 }
